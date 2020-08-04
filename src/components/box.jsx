@@ -40,9 +40,35 @@ const Box = ({ name }) => {
 
   drag(drop(dragNdropRef));
 
+  const handleClick = () => {
+    const input = prompt('Sett ny verdi', value);
+    const inputAmount = parseInt(input, 10);
+    if (isNaN(inputAmount)) return;
+    dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+  };
+
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      const input = prompt('Sett ny verdi', value);
+      const inputAmount = parseInt(input, 10);
+      if (isNaN(inputAmount)) return;
+      dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+    }
+  };
+
   return (
     <div ref={dragNdropRef} style={{ opacity }}>
-      <span ref={inputRef} data-name={name}>{value}</span>
+      <span
+        className="box"
+        role="textbox"
+        tabIndex={0}
+        ref={inputRef}
+        data-name={name}
+        onClick={() => handleClick()}
+        onKeyUp={(e) => handleKeyUp(e)}
+      >
+        {value}
+      </span>
     </div>
   );
 };
