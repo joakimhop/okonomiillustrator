@@ -1,9 +1,14 @@
 import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
+import PropTypes from 'prop-types';
 
-const Box = () => {
+const Box = ({ name }) => {
+  const dispatch = useDispatch();
+  const value = useSelector((state) => state.game[name]);
   const dragNdropRef = useRef(null);
   const inputRef = useRef();
+
   const [{ opacity }, drag] = useDrag({
     item: { type: 'ValueBox' },
     collect: (monitor) => ({
@@ -11,17 +16,19 @@ const Box = () => {
     }),
     end: (item, monitor) => {
       if (monitor.didDrop()) {
-        const droppedInputRef = monitor.getDropResult();
-        if (droppedInputRef.current === inputRef.current) return;
+        const creditFieldRef = monitor.getDropResult();
+        if (creditFieldRef.current === inputRef.current) return;
         const input = prompt('Hvor mye?', '0');
         const inputAmount = parseInt(input, 10);
         if (isNaN(inputAmount)) return;
 
-        const droppedNode = droppedInputRef.current;
-        droppedNode.value = droppedNode.value ? parseInt(droppedNode.value, 10) + inputAmount : inputAmount;
+        const creditNode = creditFieldRef.current;
+        const creditNodeNewValue = creditNode.value ? parseInt(creditNode.value, 10) + inputAmount : inputAmount;
+        dispatch({ type: 'SET_FIELD', name: creditNode.name, value: creditNodeNewValue });
 
-        const node = inputRef.current;
-        node.value = node.value ? parseInt(node.value, 10) - inputAmount : -inputAmount;
+        const debitNode = inputRef.current;
+        const newDebitNodeValue = debitNode.value ? parseInt(debitNode.value, 10) - inputAmount : -inputAmount;
+        dispatch({ type: 'SET_FIELD', name, value: newDebitNodeValue });
       }
     },
   });
@@ -35,9 +42,13 @@ const Box = () => {
 
   return (
     <div ref={dragNdropRef} style={{ opacity }}>
-      <input type="tel" name="stock" ref={inputRef} />
+      <input type="tel" name={name} ref={inputRef} value={value} />
     </div>
   );
+};
+
+Box.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 
 export default Box;

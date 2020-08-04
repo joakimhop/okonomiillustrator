@@ -1,29 +1,16 @@
-import calculateWinner from '../helpers/calculateWinner';
+import createCookie from '../helpers/createCookie';
 
-const game = (state = {
-  history: [{ squares: Array(9).fill(null) }],
-  stepNumber: 0,
-}, action) => {
+const game = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_MOVE':
-      const updatedHistory = state.history.slice(0, action.step + 1);
-      const current = updatedHistory[updatedHistory.length - 1];
-      const squares = current.squares.slice();
-      if (calculateWinner(squares) || squares[action.square]) {
-        return state;
-      }
-      squares[action.square] = (action.step % 2) === 0 ? 'X' : 'O';
-      return {
-        history: updatedHistory.concat([{
-          squares,
-        }]),
-        stepNumber: updatedHistory.length,
-      };
-    case 'JUMP_TO':
-      return {
+    case 'SET_FIELD':
+      const newState = {
         ...state,
-        stepNumber: action.step,
+        [action.name]: action.value,
       };
+      createCookie(newState);
+      return newState;
+    case 'INIT':
+      return action.data;
     default:
       return state;
   }
