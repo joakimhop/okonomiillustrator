@@ -1,39 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Square from './square';
+import React, { useRef } from 'react';
 
-const Board = ({ squares, onClick }) => {
-  const renderSquare = (i) => (
-    <Square
-      value={squares[i]}
-      onClick={() => onClick(i)}
-    />
-  );
+const Board = () => {
+  const incomeRef = useRef();
+  const stockRef = useRef();
+
+  const moveMoney = (from, to) => {
+    const input = prompt('Hvor mye?', '0');
+    const amount = parseInt(input, 10);
+    if (isNaN(amount)) return;
+    const fromNode = from.current;
+    fromNode.value = fromNode.value ? parseInt(fromNode.value, 10) - amount : -amount;
+    const toNode = to.current;
+    toNode.value = toNode.value ? parseInt(toNode.value, 10) + amount : amount;
+  };
 
   return (
     <div>
-      <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
+      <div className="storage">
+        <input type="number" name="stock" ref={stockRef} />
+        <button type="button" onClick={() => moveMoney(stockRef, incomeRef)}>Flytt penger</button>
       </div>
-      <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
-      <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+      <div className="finance">
+        <input type="number" name="bank" ref={incomeRef} />
+        <button type="button" onClick={() => moveMoney(incomeRef, stockRef)}>Flytt penger</button>
       </div>
     </div>
   );
-};
-
-Board.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default Board;
