@@ -10,7 +10,9 @@ const Board = () => {
 
   useEffect(() => {
     const cookieData = readCookie();
-    dispatch({ type: 'INIT', data: cookieData });
+    if (cookieData) {
+      dispatch({ type: 'INIT', data: cookieData });
+    }
   });
 
   return (
