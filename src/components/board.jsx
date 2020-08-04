@@ -1,31 +1,19 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+import Box from './box';
 
-const Board = () => {
-  const incomeRef = useRef();
-  const stockRef = useRef();
-
-  const moveMoney = (from, to) => {
-    const input = prompt('Hvor mye?', '0');
-    const amount = parseInt(input, 10);
-    if (isNaN(amount)) return;
-    const fromNode = from.current;
-    fromNode.value = fromNode.value ? parseInt(fromNode.value, 10) - amount : -amount;
-    const toNode = to.current;
-    toNode.value = toNode.value ? parseInt(toNode.value, 10) + amount : amount;
-  };
-
-  return (
+const Board = () => (
+  <DndProvider backend={HTML5Backend}>
     <div>
       <div className="storage">
-        <input type="number" name="stock" ref={stockRef} />
-        <button type="button" onClick={() => moveMoney(stockRef, incomeRef)}>Flytt penger</button>
+        <Box />
       </div>
       <div className="finance">
-        <input type="number" name="bank" ref={incomeRef} />
-        <button type="button" onClick={() => moveMoney(incomeRef, stockRef)}>Flytt penger</button>
+        <Box />
       </div>
     </div>
-  );
-};
+  </DndProvider>
+);
 
 export default Board;
