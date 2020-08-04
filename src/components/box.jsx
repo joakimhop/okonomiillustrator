@@ -23,11 +23,11 @@ const Box = ({ name }) => {
         if (isNaN(inputAmount)) return;
 
         const creditNode = creditFieldRef.current;
-        const creditNodeNewValue = creditNode.value ? parseInt(creditNode.value, 10) + inputAmount : inputAmount;
-        dispatch({ type: 'SET_FIELD', name: creditNode.name, value: creditNodeNewValue });
+        const creditNodeNewValue = creditNode.innerText ? parseInt(creditNode.innerText, 10) + inputAmount : inputAmount;
+        dispatch({ type: 'SET_FIELD', name: creditNode.dataset.name, value: creditNodeNewValue });
 
         const debitNode = inputRef.current;
-        const newDebitNodeValue = debitNode.value ? parseInt(debitNode.value, 10) - inputAmount : -inputAmount;
+        const newDebitNodeValue = debitNode.innerText ? parseInt(debitNode.innerText, 10) - inputAmount : -inputAmount;
         dispatch({ type: 'SET_FIELD', name, value: newDebitNodeValue });
       }
     },
@@ -42,7 +42,7 @@ const Box = ({ name }) => {
 
   return (
     <div ref={dragNdropRef} style={{ opacity }}>
-      <input type="tel" name={name} ref={inputRef} value={value} />
+      <span ref={inputRef} data-name={name}>{value}</span>
     </div>
   );
 };
