@@ -1,6 +1,13 @@
 import createCookie from '../helpers/createCookie';
 
-const game = (state = {}, action) => {
+const initialState = {
+  bank: '0',
+  kundefordringer: '0',
+  renter: '0',
+  lan: '0',
+};
+
+const game = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_FIELD':
       const newState = {
