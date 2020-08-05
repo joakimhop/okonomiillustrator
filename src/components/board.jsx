@@ -26,22 +26,22 @@ const Board = () => {
     <DndProvider backend={HTML5Backend}>
       <Container>
         <Row>
-          <Col>
-            <Container className="left-container">
+          <Col lg={2}>
+            <div className="left-container">
               <CommodityStock />
-            </Container>
+            </div>
           </Col>
-          <Col lg={7}>
-            <Container className="main-container">
+          <Col lg={8}>
+            <div className="main-container">
               <Costs />
               <Stock />
               <Finance />
-            </Container>
+            </div>
           </Col>
-          <Col>
-            <Container className="right-container">
+          <Col lg={2}>
+            <div className="right-container">
               <Customer />
-            </Container>
+            </div>
           </Col>
         </Row>
       </Container>

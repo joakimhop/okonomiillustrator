@@ -4,9 +4,9 @@ import Col from 'react-bootstrap/Col';
 import Box from './box';
 
 const Finance = () => (
-  <Row className="finance text-center">
-    <Col><h3>PENGER - FINANS</h3></Col>
-    <Row>
+  <div className="finance text-center">
+    <Row><Col><h3>PENGER - FINANS</h3></Col></Row>
+    <Row className="align-items-end">
       <Col>
         <Box name="bank" title="Bank/Kasse" />
       </Col>
@@ -14,7 +14,10 @@ const Finance = () => (
         <Box name="kundefordringer" title="Kundefordringer" />
       </Col>
     </Row>
-    <Row>
+    <Row className="align-items-end">
+      <Col>
+        <Box name="skatt" title="Skatt" />
+      </Col>
       <Col>
         <Box name="renter" title="Renter" />
       </Col>
@@ -22,7 +25,7 @@ const Finance = () => (
         <Box name="lan" title="Lån" />
       </Col>
     </Row>
-  </Row>
+  </div>
 );
 
 export default Finance;

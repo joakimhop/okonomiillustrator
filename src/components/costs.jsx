@@ -4,9 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Box from './box';
 
 const Costs = () => (
-  <Row className="costs text-center">
-    <Col><h3>ÅRLIGE BETALBARE KOSTNADER</h3></Col>
+  <div className="costs text-center">
     <Row>
+      <Col><h3>ÅRLIGE BETALBARE KOSTNADER</h3></Col>
+    </Row>
+    <Row className="align-items-end">
       <Col>
         <Box name="lonn" title="Lønn" />
       </Col>
@@ -26,16 +28,17 @@ const Costs = () => (
         <Box name="tappakunder" title="Tap på kunder" />
       </Col>
       <Col>
-        <Box name="markedsforing" title="Markeds- føring" />
+        <Box name="salg_admin" title="Salg/admin" />
       </Col>
       <Col>
         <Box name="utviklingskostnader" title="Utviklings- kostnader" />
       </Col>
       <Col>
+        <h6>Ikke betalbare</h6>
         <Box name="avskrivning" title="Avskrivning" />
       </Col>
     </Row>
-  </Row>
+  </div>
 );
 
 export default Costs;

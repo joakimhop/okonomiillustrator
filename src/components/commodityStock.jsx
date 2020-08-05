@@ -4,14 +4,14 @@ import Col from 'react-bootstrap/Col';
 import Box from './box';
 
 const CommodityStock = () => (
-  <Row className="commoditystock text-center">
-    <Col><h3>RÅVARE- LEVERANDØR</h3></Col>
+  <div className="commoditystock text-center">
+    <Row><Col>RÅVARE- LEVERANDØR</Col></Row>
     <Row className="text-center">
       <Col>
         <Box name="ravareleverandor" title="" />
       </Col>
     </Row>
-  </Row>
+  </div>
 );
 
 export default CommodityStock;

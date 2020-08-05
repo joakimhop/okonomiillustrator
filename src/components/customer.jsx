@@ -4,20 +4,34 @@ import Col from 'react-bootstrap/Col';
 import Box from './box';
 
 const Customer = () => (
-  <Row className="customer text-center">
+  <div className="customer text-center">
     <Col><h3>KUNDE</h3></Col>
     <Row>
       <Col>
-        <Box name="kunde" title="Oppstilling av ferdigvarer" />
+        <Box name="ferdigvarer" title="Oppstilling av ferdigvarer" />
       </Col>
     </Row>
     <Row>
       <Col>
-        <Box name="penger" title="Penger (kundens penger)" />
+        <Box name="penger1kvartal" title="Penger 1 kvartal" />
       </Col>
     </Row>
-
-  </Row>
+    <Row>
+      <Col>
+        <Box name="penger2kvartal" title="Penger 2 kvartal" />
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <Box name="penger3kvartal" title="Penger 3 kvartal" />
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <Box name="penger4kvartal" title="Penger 4 kvartal" />
+      </Col>
+    </Row>
+  </div>
 );
 
 export default Customer;

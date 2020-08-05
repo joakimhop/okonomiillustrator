@@ -1,32 +1,61 @@
 .costs {
   background-color: rgb(255, 217, 0);
-  border-radius: 25px;
-  padding: 25px 10px;
+  border-radius: 15px;
+  padding: 15px 10px;
+  margin-top: 10px;
+}
+
+.costs .col {
+  padding-left: 5px !important;
+  padding-right: 5px !important; 
+}
+
+.costs .col:first-child {
+  padding-left: 10px !important;
+  padding-right: 5px !important; 
+}
+
+.costs .col:last-child {
+  padding-left: 5px !important;
+  padding-right: 10px !important; 
 }
 
 .in-stock {
   background-color: rgb(255, 38, 0);
-  border-radius: 25px;
-  padding: 25px 10px;
+  border-radius: 15px;
+  padding: 15px 10px;
+  margin-top: 10px;
 }
 
 .finance {
   background-color: blue ;
-  border-radius: 25px;
-  padding: 25px 10px;
+  border-radius: 15px;
+  padding: 15px 10px;
   color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .customer {
   background-color: rgb(104, 127, 148) ;
-  border-radius: 25px;
-  padding: 25px 10px;
+  border-radius: 15px;
+  padding: 15px 10px;
 }
 
 .commoditystock {
   background-color: rgb(104, 127, 148) ;
-  border-radius: 25px;
-  padding: 25px 10px;
+  border-radius: 15px;
+  padding: 15px 10px;
+}
+
+.level2container {
+  background-color: lightgray;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.lastrow {
+  padding-bottom: 10px;
 }
 
 .main-container > .row {
@@ -55,4 +84,8 @@
 
 .side-column > div {
   padding-top: 75px !important;
+}
+
+.underAreaTitle {
+  padding-top: 28px;
 }
