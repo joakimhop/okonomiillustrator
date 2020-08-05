@@ -47,7 +47,8 @@ const Box = ({ name, title }) => {
 
   drag(drop(dragNdropRef));
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     const inputAmount = getUserInput('Sett ny verdi', value);
     if (inputAmount || inputAmount === 0) {
       dispatch({ type: 'SET_FIELD', name, value: inputAmount });
@@ -73,8 +74,8 @@ const Box = ({ name, title }) => {
           tabIndex={0}
           ref={inputRef}
           data-name={name}
-          onClick={() => handleClick()}
           onKeyUp={(e) => handleKeyUp(e)}
+          onContextMenu={(e) => handleClick(e)}
         >
           {value}
         </div>
