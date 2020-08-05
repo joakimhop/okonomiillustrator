@@ -9,6 +9,13 @@ const Box = ({ name }) => {
   const dragNdropRef = useRef(null);
   const inputRef = useRef();
 
+  const getUserInput = (text, defaultValue) => {
+    const input = prompt(text, defaultValue).replace(',', '.');
+    const inputAmount = parseFloat(input);
+    if (isNaN(inputAmount)) return null;
+    return parseFloat(inputAmount.toFixed(2));
+  };
+
   const [{ opacity }, drag] = useDrag({
     item: { type: 'ValueBox' },
     collect: (monitor) => ({
@@ -18,17 +25,16 @@ const Box = ({ name }) => {
       if (monitor.didDrop()) {
         const creditFieldRef = monitor.getDropResult();
         if (creditFieldRef.current === inputRef.current) return;
-        const input = prompt('Hvor mye?', '0');
-        const inputAmount = parseInt(input, 10);
-        if (isNaN(inputAmount)) return;
+        const inputAmount = getUserInput('Hvor mye?', '0');
+        if (!inputAmount) return;
 
         const creditNode = creditFieldRef.current;
-        const creditNodeNewValue = creditNode.innerText ? parseInt(creditNode.innerText, 10) + inputAmount : inputAmount;
-        dispatch({ type: 'SET_FIELD', name: creditNode.dataset.name, value: creditNodeNewValue });
+        const creditNodeNewValue = creditNode.innerText ? parseFloat(creditNode.innerText) + inputAmount : inputAmount;
+        dispatch({ type: 'SET_FIELD', name: creditNode.dataset.name, value: creditNodeNewValue.toFixed(2) });
 
         const debitNode = inputRef.current;
-        const newDebitNodeValue = debitNode.innerText ? parseInt(debitNode.innerText, 10) - inputAmount : -inputAmount;
-        dispatch({ type: 'SET_FIELD', name, value: newDebitNodeValue });
+        const newDebitNodeValue = debitNode.innerText ? parseFloat(debitNode.innerText) - inputAmount : -inputAmount;
+        dispatch({ type: 'SET_FIELD', name, value: newDebitNodeValue.toFixed(2) });
       }
     },
   });
@@ -41,18 +47,18 @@ const Box = ({ name }) => {
   drag(drop(dragNdropRef));
 
   const handleClick = () => {
-    const input = prompt('Sett ny verdi', value);
-    const inputAmount = parseInt(input, 10);
-    if (isNaN(inputAmount)) return;
-    dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+    const inputAmount = getUserInput('Sett ny verdi', value);
+    if (inputAmount) {
+      dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+    }
   };
 
   const handleKeyUp = (e) => {
     if (e.key === 'Enter') {
-      const input = prompt('Sett ny verdi', value);
-      const inputAmount = parseInt(input, 10);
-      if (isNaN(inputAmount)) return;
-      dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+      const inputAmount = getUserInput('Sett ny verdi', value);
+      if (inputAmount) {
+        dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+      }
     }
   };
 
