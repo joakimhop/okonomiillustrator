@@ -5,7 +5,7 @@ import Box from './box';
 
 const Costs = () => (
   <Row className="costs text-center">
-    <Col><h2>ÅRLIGE BETALBARE KOSTNADER</h2></Col>
+    <Col><h3>ÅRLIGE BETALBARE KOSTNADER</h3></Col>
     <Row>
       <Col>
         <Box name="lonn" title="Lønn" />

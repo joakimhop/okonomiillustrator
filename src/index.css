@@ -1,14 +1,32 @@
 .costs {
-  background-color: yellow;
+  background-color: rgb(255, 217, 0);
+  border-radius: 25px;
+  padding: 25px 10px;
 }
 
 .in-stock {
-  background-color: red;
+  background-color: rgb(255, 38, 0);
+  border-radius: 25px;
+  padding: 25px 10px;
 }
 
 .finance {
-  background-color: blue;
+  background-color: blue ;
+  border-radius: 25px;
+  padding: 25px 10px;
   color: white;
+}
+
+.customer {
+  background-color: rgb(104, 127, 148) ;
+  border-radius: 25px;
+  padding: 25px 10px;
+}
+
+.commoditystock {
+  background-color: rgb(104, 127, 148) ;
+  border-radius: 25px;
+  padding: 25px 10px;
 }
 
 .main-container > .row {
@@ -19,16 +37,20 @@
   font-size: x-large;
   padding: 10px;
   font-weight: bold;
-  background-color: rgb(13, 96, 252);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 .box-title {
   font-size: small;
 }
 
-.left-containter {
-  justify-content: center;
-  align-items: center;
+.left-container {
+  padding-top: 300px !important;
+}
+
+.right-container {
+  padding-top: 300px !important;
 }
 
 .side-column > div {

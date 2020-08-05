@@ -43,7 +43,6 @@ const Board = () => {
               <Customer />
             </Container>
           </Col>
-
         </Row>
       </Container>
     </DndProvider>

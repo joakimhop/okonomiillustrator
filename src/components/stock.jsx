@@ -5,14 +5,16 @@ import Box from './box';
 
 const Stock = () => (
   <Row className="in-stock text-center">
-    <Col><h2>LAGER - PROSESSER - VARER I ARBEID</h2></Col>
+    <Col><h3>LAGER - PROSESSER - VARER I ARBEID</h3></Col>
     <Row>
       <Col className="side-column">
         <Box name="ravarelager" title="Råvarelager" />
       </Col>
       <Col xs={5}>
         <Row>
-          <h3>Areal prosess A</h3>
+          <Col><h5>Areal prosess A</h5></Col>
+        </Row>
+        <Row>
           <Col>
             <Box name="produksjon" title="Produksjon" />
           </Col>
@@ -21,7 +23,9 @@ const Stock = () => (
           </Col>
         </Row>
         <Row>
-          <h3>Areal prosess B</h3>
+          <Col><h5>Areal prosess B</h5></Col>
+        </Row>
+        <Row>
           <Col>
             <Box name="prosess" title="Prosess" />
           </Col>

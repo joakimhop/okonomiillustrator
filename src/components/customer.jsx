@@ -5,7 +5,7 @@ import Box from './box';
 
 const Customer = () => (
   <Row className="customer text-center">
-    <Col><h2>KUNDE</h2></Col>
+    <Col><h3>KUNDE</h3></Col>
     <Row>
       <Col>
         <Box name="kunde" title="Oppstilling av ferdigvarer" />

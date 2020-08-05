@@ -5,7 +5,7 @@ import Box from './box';
 
 const Finance = () => (
   <Row className="finance text-center">
-    <Col><h2>PENGER - FINANS</h2></Col>
+    <Col><h3>PENGER - FINANS</h3></Col>
     <Row>
       <Col>
         <Box name="bank" title="Bank/Kasse" />

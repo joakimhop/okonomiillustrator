@@ -5,7 +5,7 @@ import Box from './box';
 
 const CommodityStock = () => (
   <Row className="commoditystock text-center">
-    <Col><h2>RÅVARE- LEVERANDØR</h2></Col>
+    <Col><h3>RÅVARE- LEVERANDØR</h3></Col>
     <Row className="text-center">
       <Col>
         <Box name="ravareleverandor" title="" />
