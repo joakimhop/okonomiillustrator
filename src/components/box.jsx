@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const Box = ({ name, title }) => {
   const dispatch = useDispatch();
-  const value = useSelector((state) => state.game[name]);
+  const value = useSelector((state) => state.gameServer.data[name]);
   const dragNdropRef = useRef(null);
   const inputRef = useRef();
 
