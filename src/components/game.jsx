@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Board from './board';
-import getGroupData from '../actions/game';
+import { getGameData } from '../actions/game';
 
 const Game = () => {
   const dispatch = useDispatch();
-  const groupId = useSelector((state) => state.groupId);
+  const groupId = useSelector((state) => state.gameServer.groupId);
 
   useEffect(() => {
-    dispatch(getGroupData(groupId));
+    dispatch(getGameData(groupId));
   });
 
   return (

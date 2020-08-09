@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
 import PropTypes from 'prop-types';
+import { setGameDataField } from '../actions/game';
 
 const Box = ({ name, title }) => {
   const dispatch = useDispatch();
@@ -30,12 +31,16 @@ const Box = ({ name, title }) => {
         if (!inputAmount) return;
 
         const creditNode = creditFieldRef.current;
-        const creditNodeNewValue = creditNode.innerText ? parseInt(creditNode.innerText, 10) + inputAmount : inputAmount;
-        dispatch({ type: 'SET_FIELD', name: creditNode.dataset.name, value: creditNodeNewValue });
+        const creditNodeNewValue = creditNode.innerText
+          ? parseInt(creditNode.innerText, 10) + inputAmount
+          : inputAmount;
+        dispatch(setGameDataField(creditNode.dataset.name, creditNodeNewValue));
 
         const debitNode = inputRef.current;
-        const newDebitNodeValue = debitNode.innerText ? parseInt(debitNode.innerText, 10) - inputAmount : -inputAmount;
-        dispatch({ type: 'SET_FIELD', name, value: newDebitNodeValue });
+        const newDebitNodeValue = debitNode.innerText
+          ? parseInt(debitNode.innerText, 10) - inputAmount
+          : -inputAmount;
+        dispatch(setGameDataField(name, newDebitNodeValue));
       }
     },
   });
@@ -51,7 +56,7 @@ const Box = ({ name, title }) => {
     e.preventDefault();
     const inputAmount = getUserInput('Sett ny verdi', value);
     if (inputAmount || inputAmount === 0) {
-      dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+      dispatch(setGameDataField(name, inputAmount));
     }
   };
 
@@ -59,7 +64,7 @@ const Box = ({ name, title }) => {
     if (e.key === 'Enter') {
       const inputAmount = getUserInput('Sett ny verdi', value);
       if (inputAmount || inputAmount === 0) {
-        dispatch({ type: 'SET_FIELD', name, value: inputAmount });
+        dispatch(setGameDataField(name, inputAmount));
       }
     }
   };

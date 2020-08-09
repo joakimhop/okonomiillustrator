@@ -1,5 +1,5 @@
-const getGroupData = (groupId) => ({
-  type: 'GET_GROUP_DATA',
+export const getGameData = (groupId) => ({
+  type: 'GET_GAME_DATA',
   payload: {
     request: {
       url: `getGameData?groupId=${groupId}`,
@@ -7,4 +7,8 @@ const getGroupData = (groupId) => ({
   },
 });
 
-export default getGroupData;
+export const setGameDataField = (name, value) => ({
+  type: 'SET_GAME_DATA_FIELD',
+  name,
+  value,
+});
