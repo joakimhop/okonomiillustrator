@@ -20,8 +20,9 @@ const App = () => {
     if (email) {
       axios.post('https://us-central1-okonomisimulator.cloudfunctions.net/isRegistered', { email })
         .then((response) => {
-          setAuthenticated(response.data.registered);
-          dispatch(setGroupId(response.data.groupId));
+          const { data } = response;
+          setAuthenticated(data.registered);
+          dispatch(setGroupId(data.groupId));
         });
     }
   });
