@@ -4,9 +4,9 @@ import { useDrag, useDrop } from 'react-dnd';
 import PropTypes from 'prop-types';
 import { setGameDataField } from '../actions/game';
 
-const Box = ({ name, title }) => {
+const Box = ({ name, title, redBorder }) => {
   const dispatch = useDispatch();
-  const value = useSelector((state) => state.gameServer.data[name]);
+  const value = useSelector((state) => state.game.data[name]);
   const dragNdropRef = useRef(null);
   const inputRef = useRef();
 
@@ -74,7 +74,7 @@ const Box = ({ name, title }) => {
       <span className="box-title">{title}</span>
       <div ref={dragNdropRef} style={{ opacity }}>
         <div
-          className="box"
+          className={`box ${redBorder ? 'box-red-border' : ''}`}
           role="textbox"
           tabIndex={0}
           ref={inputRef}
@@ -92,6 +92,11 @@ const Box = ({ name, title }) => {
 Box.propTypes = {
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  redBorder: PropTypes.bool,
+};
+
+Box.defaultProps = {
+  redBorder: false,
 };
 
 export default Box;

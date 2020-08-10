@@ -31,11 +31,11 @@ const Costs = () => (
         <Box name="salg_admin" title="Salg/admin" />
       </Col>
       <Col>
-        <Box name="utviklingskostnader" title="Utviklings- kostnader" />
+        <Box name="utviklingskostnader" title="Utviklings- kostnader" redBorder />
       </Col>
       <Col>
         <h6>Ikke betalbare</h6>
-        <Box name="avskrivning" title="Avskrivning" />
+        <Box name="avskrivning" title="Avskrivning" redBorder />
       </Col>
     </Row>
   </div>

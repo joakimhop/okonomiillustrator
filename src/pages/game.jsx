@@ -5,7 +5,7 @@ import { getGameData } from '../actions/game';
 
 const Game = () => {
   const dispatch = useDispatch();
-  const groupId = useSelector((state) => state.gameServer.groupId);
+  const groupId = useSelector((state) => state.game.groupId);
 
   useEffect(() => {
     if (groupId) {

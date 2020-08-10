@@ -1,6 +1,6 @@
-import createCookie from '../helpers/createSessionCookie';
+import axios from 'axios';
 
-const initialState = {
+const initialGameData = {
   /* finance */
   bank: '0',
   kundefordringer: '0',
@@ -33,19 +33,53 @@ const initialState = {
   penger2kvartal: '0',
   penger3kvartal: '0',
   penger4kvartal: '0',
+  /* establishment */
+  etableringskostnader: '0',
 };
 
-const game = (state = initialState, action) => {
+const game = (state = { groupId: null, loading: false, data: {} }, action) => {
   switch (action.type) {
-    case 'SET_FIELD':
-      const newState = {
+    case 'GET_GAME_DATA':
+      return {
         ...state,
-        [action.name]: action.value,
+        loading: true,
+        data: {},
       };
-      createCookie(newState);
-      return newState;
-    case 'INIT':
-      return action.data;
+    case 'GET_GAME_DATA_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        data: {
+          ...initialGameData,
+          ...action.payload.data.item,
+        },
+      };
+    case 'SET_GAME_DATA_FIELD':
+      axios.post('https://us-central1-okonomisimulator.cloudfunctions.net/setGameDataField', {
+        id: state.groupId,
+        name: action.name,
+        value: action.value,
+      })
+        .then(() => ({
+          ...state,
+          data: {
+            ...state.data,
+            [action.name]: action.value,
+          },
+        }))
+        .catch(() => state);
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.name]: action.value,
+        },
+      };
+    case 'SET_GROUP_ID':
+      return {
+        ...state,
+        groupId: action.groupId,
+      };
     default:
       return state;
   }

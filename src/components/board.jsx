@@ -11,11 +11,11 @@ import Stock from './stock';
 import Costs from './costs';
 import CommodityStock from './commodityStock';
 import Customer from './customer';
+import Establishment from './establishment';
 import deleteSessionCookie from '../helpers/deleteSessionCookie';
 
-
 const Board = () => {
-  const gameData = useSelector((state) => state.gameServer);
+  const gameData = useSelector((state) => state.game);
 
   const handleLogout = () => {
     deleteSessionCookie();
@@ -45,6 +45,7 @@ const Board = () => {
               </Col>
               <Col lg={2}>
                 <div className="right-container">
+                  <Establishment />
                   <Customer />
                 </div>
               </Col>
