@@ -1,4 +1,4 @@
-import createCookie from '../helpers/createCookie';
+import createCookie from '../helpers/createSessionCookie';
 
 const initialState = {
   /* finance */

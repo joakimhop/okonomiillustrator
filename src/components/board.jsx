@@ -5,14 +5,22 @@ import { DndProvider } from 'react-dnd';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import Finance from './finance';
 import Stock from './stock';
 import Costs from './costs';
 import CommodityStock from './commodityStock';
 import Customer from './customer';
+import deleteSessionCookie from '../helpers/deleteSessionCookie';
+
 
 const Board = () => {
   const gameData = useSelector((state) => state.gameServer);
+
+  const handleLogout = () => {
+    deleteSessionCookie();
+    window.location.reload();
+  };
 
   return (
     <div>
@@ -22,6 +30,9 @@ const Board = () => {
             <Row>
               <Col lg={2}>
                 <div className="left-container">
+                  <Button variant="secondary" type="submit" onClick={() => handleLogout()}>
+                    Logg ut
+                  </Button>
                   <CommodityStock />
                 </div>
               </Col>

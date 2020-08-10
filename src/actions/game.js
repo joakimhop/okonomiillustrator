@@ -12,3 +12,8 @@ export const setGameDataField = (name, value) => ({
   name,
   value,
 });
+
+export const setGroupId = (groupId) => ({
+  type: 'SET_GROUP_ID',
+  groupId,
+});

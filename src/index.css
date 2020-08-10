@@ -74,12 +74,16 @@
   font-size: small;
 }
 
-.left-container {
-  padding-top: 300px !important;
+.left-container, .right-container {
+  margin-top: 20px;
+} 
+
+.left-container > .commoditystock  {
+  margin-top: 300px !important;
 }
 
-.right-container {
-  padding-top: 300px !important;
+.right-container > .customer {
+  margin-top: 300px !important;
 }
 
 .side-column > div {
@@ -88,4 +92,8 @@
 
 .underAreaTitle {
   padding-top: 28px;
+}
+
+.login-container {
+  margin: 20px 0;
 }

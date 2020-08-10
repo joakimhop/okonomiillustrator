@@ -35,7 +35,7 @@ const initialGameData = {
   penger4kvartal: '0',
 };
 
-const gameServer = (state = { groupId: 'blue', loading: false, data: {} }, action) => {
+const gameServer = (state = { groupId: null, loading: false, data: {} }, action) => {
   switch (action.type) {
     case 'GET_GAME_DATA':
       return {
@@ -72,6 +72,11 @@ const gameServer = (state = { groupId: 'blue', loading: false, data: {} }, actio
           ...state.data,
           [action.name]: action.value,
         },
+      };
+    case 'SET_GROUP_ID':
+      return {
+        ...state,
+        groupId: action.groupId,
       };
     default:
       return state;

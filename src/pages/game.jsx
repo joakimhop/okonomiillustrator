@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Board from './board';
+import Board from '../components/board';
 import { getGameData } from '../actions/game';
 
 const Game = () => {
@@ -8,8 +8,10 @@ const Game = () => {
   const groupId = useSelector((state) => state.gameServer.groupId);
 
   useEffect(() => {
-    dispatch(getGameData(groupId));
-  });
+    if (groupId) {
+      dispatch(getGameData(groupId));
+    }
+  }, [groupId, dispatch]);
 
   return (
     <div className="game">
